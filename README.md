@@ -1,5 +1,7 @@
 # Vulnerability Detections
 
+![Vulnerability Detections Logo](public/meta/home_page.png)
+
 Vulnerability Detections is a robust security scanner tool designed for detecting vulnerabilities, identifying misconfigurations in Infrastructure as Code (IaC), performing SBOM (Software Bill of Materials) discovery, conducting cloud scanning, assessing Kubernetes security, and more.
 
 ## Supported Scanning Types
