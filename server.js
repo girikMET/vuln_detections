@@ -11,7 +11,7 @@ function handleRoute(req, res, fileName) {
 
 app.get('/:page', (req, res) => {
   const page = req.params.page;
-  handleRoute(req, res, `${page}.html`, context);
+  handleRoute(req, res, `${page}.html`);
 });
 
 app.listen(PORT, () => {

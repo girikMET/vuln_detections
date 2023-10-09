@@ -27,6 +27,7 @@
   "homepage": "https://github.com/girikMET/vuln_detections#readme",
   "dependencies": {
     "express": "^4.18.2",
+    "package.json": "^2.0.1",
     "python": "^0.0.4",
     "python3": "^0.0.1"
   }
