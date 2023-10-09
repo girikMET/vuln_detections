@@ -56,11 +56,14 @@
                      <div class="header_title_wrap">
                         <div class="columns is-vcentered is-gapless">
                            <div class="header_title_content_wrap">
-                              <h1 class="title page_title is-spaced fadeInUp">GitHub Repository Scanning</h1>
-                              <form action="/scan_results" method="get">
-                                     <input type="text" id="githubUrl" placeholder="Git-Hub Repository Url" name="githubUrl"><br><br>
-                                     <input type="submit" value="Submit">
-                              </form>
+                            <script>
+                                // Parse the URL to get the query parameters
+                                const urlParams = new URLSearchParams(window.location.search);
+                                const githubUrl = urlParams.get('githubUrl');
+                        
+                                // Now you can use the 'githubUrl' variable in your JavaScript code
+                                console.log('Received githubUrl:', githubUrl);
+                            </script>
                            </div>
                         </div>
                      </div>
