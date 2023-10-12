@@ -2,21 +2,22 @@ function showNotImplementedMessage() {
     event.preventDefault();
     alert("File System Scanning feature is still in progress and has not been implemented yet. Please check back later for updates.");
 }
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     const repositoryUrlInput = document.getElementById('githubUrl');
     const generateReportBtn = document.getElementById('generateReportBtn');
     generateReportBtn.disabled = true;
-    repositoryUrlInput.addEventListener('input', function () {
+    repositoryUrlInput.addEventListener('input', function() {
         const isValidUrl = validateRepositoryUrl(repositoryUrlInput.value);
         generateReportBtn.disabled = !isValidUrl;
         generateReportBtn.value = isValidUrl ? 'Validate' : 'Submit';
     });
+
     function validateRepositoryUrl(url) {
         const regex = /^(https?:\/\/)?(www\.)?github\.com\/[^\s\/]+\/[^\s\/]+$/;
         return regex.test(url);
     }
     let isFormSubmitted = false;
-    document.getElementById('repositoryForm').addEventListener('submit', async function (e) {
+    document.getElementById('repositoryForm').addEventListener('submit', async function(e) {
         if (!isFormSubmitted) {
             e.preventDefault();
             const repositoryUrl = repositoryUrlInput.value;
