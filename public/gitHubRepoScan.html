@@ -7,6 +7,7 @@
       <link rel='stylesheet' id='main-style-css2' href='css/styles.css' type='text/css' media='all'>
       <script type='text/javascript' src='https://trivy.dev/wp-content/themes/trivy_v1/js/trivy_v1.js?ver=1.0.28' id='trivy_v1-js'></script>
       <script src="js/scripts.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    </head>
    <body class="home page-template page-template-page-trivy_homepage page-template-page-trivy_homepage-php page page-id-11">
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5N9T3H" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -57,10 +58,11 @@
                         <div class="columns is-vcentered is-gapless">
                            <div class="header_title_content_wrap">
                               <h1 class="title page_title is-spaced fadeInUp">GitHub Repository Scanning</h1>
-                              <form action="/scan_results" method="get">
-                                     <input type="text" id="githubUrl" placeholder="Git-Hub Repository Url" name="githubUrl"><br><br>
-                                     <input type="submit" value="Submit">
-                              </form>
+                              <form id="repositoryForm" action="/validate-repo" method="post">
+                                 <input type="text" id="githubUrl" placeholder="Enter GitHub Repository URL:" required size="80px">
+                                 <input type="submit" id="generateReportBtn" value="Submit">
+                             </form>
+                             <div id="result"></div>
                            </div>
                         </div>
                      </div>
@@ -83,22 +85,6 @@
                <div class="person_wrap"></div>
             </div>
          </div>
-         <script type="text/javascript">
-            var $j_hpcom = jQuery.noConflict();
-            $j_hpcom(document).ready(function(){
-            	$j_hpcom('.community_quotes_wrap').slick({
-            		arrows: false,
-            		dots: true,
-            		centerMode: false,
-            		infinite: true,
-            		slidesToShow: 1,
-            		focusOnSelect: true,
-            		autoplay: true,
-            		autoplaySpeed: 3000
-            	});
-            
-            });
-         </script>
          <div class="section bouncing_blocks_wrap">
             <div class="container">
                <div class="page_accelerator_wrap">
