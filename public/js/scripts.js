@@ -53,8 +53,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 isFormSubmitted = false;
                 alert('The entered repository exists, please proceed further.');
-                window.location.href = '/scan_results';
-
+                var destinationURL = '/scan_results?path=' + strippedUrl + '.json';
+                var jsonFilePath = '../meta/results/' + strippedUrl + '.json';
+                fetch(jsonFilePath)
+                    .then(function(response) {
+                        if (response.ok) {
+                        window.location.href = destinationURL;
+                        } else {
+                        console.error('JSON file does not exist at path:', jsonFilePath);
+                        }
+                    })
+                    .catch(function(error) {
+                        console.error('Error fetching JSON file:', error);
+                    });
                 const response = await fetch('/validate-repo', {
                     method: 'POST',
                     headers: {
