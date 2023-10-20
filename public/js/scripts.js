@@ -5,43 +5,56 @@ function showNotImplementedMessage() {
 document.addEventListener('DOMContentLoaded', function() {
     const repositoryUrlInput = document.getElementById('githubUrl');
     const generateReportBtn = document.getElementById('generateReportBtn');
-    generateReportBtn.disabled = true;
-    repositoryUrlInput.addEventListener('input', function() {
-        const isValidUrl = validateRepositoryUrl(repositoryUrlInput.value);
-        generateReportBtn.disabled = !isValidUrl;
-        generateReportBtn.value = isValidUrl ? 'Validate' : 'Submit';
-    });
+    if (generateReportBtn) {
+        generateReportBtn.disabled = true;
+
+        if (repositoryUrlInput) {
+            repositoryUrlInput.addEventListener('input', function() {
+                const isValidUrl = validateRepositoryUrl(repositoryUrlInput.value);
+                generateReportBtn.disabled = !isValidUrl;
+                generateReportBtn.value = isValidUrl ? 'Validate' : 'Submit';
+            });
+        }
+    }
 
     function validateRepositoryUrl(url) {
         const regex = /^(https?:\/\/)?(www\.)?github\.com\/[^\s\/]+\/[^\s\/]+$/;
         return regex.test(url);
     }
+
     let isFormSubmitted = false;
-    document.getElementById('repositoryForm').addEventListener('submit', async function(e) {
-        if (!isFormSubmitted) {
-            e.preventDefault();
-            const repositoryUrl = repositoryUrlInput.value;
-            const isValidUrl = validateRepositoryUrl(repositoryUrl);
-            if (isValidUrl) {
-                await checkRepositoryExists(repositoryUrl);
+    const repositoryForm = document.getElementById('repositoryForm');
+    if (repositoryForm) {
+        repositoryForm.addEventListener('submit', async function(e) {
+            if (!isFormSubmitted) {
+                e.preventDefault();
+                const repositoryUrl = repositoryUrlInput ? repositoryUrlInput.value : '';
+                const isValidUrl = validateRepositoryUrl(repositoryUrl);
+                if (isValidUrl) {
+                    await checkRepositoryExists(repositoryUrl);
+                } else {
+                    alert('Invalid repository URL');
+                }
             } else {
-                alert('Invalid repository URL');
+                isFormSubmitted = false;
             }
-        } else {
-            isFormSubmitted = false;
-        }
-    });
+        });
+    }
+
     async function checkRepositoryExists(repositoryUrl) {
         const strippedUrl = repositoryUrl.replace(/^(https?:\/\/)?(www\.)?github\.com\//, '');
         const apiUrl = `https://api.github.com/repos/${strippedUrl}`;
         try {
             const response = await fetch(apiUrl);
             if (response.ok) {
-                generateReportBtn.disabled = false;
-                generateReportBtn.value = 'Submit';
+                if (generateReportBtn) {
+                    generateReportBtn.disabled = false;
+                    generateReportBtn.value = 'Submit';
+                }
                 isFormSubmitted = false;
-                alert('The entered repository exist, please proceed further');
+                alert('The entered repository exists, please proceed further.');
                 window.location.href = '/scan_results';
+
                 const response = await fetch('/validate-repo', {
                     method: 'POST',
                     headers: {
@@ -56,8 +69,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log('Validation successful:', result);
                 }
             } else {
+                if (generateReportBtn) {
+                    generateReportBtn.value = 'Validate';
+                }
                 console.log('Repository does not exist:', repositoryUrl);
-                generateReportBtn.value = 'Validate';
                 alert('The repository does not exist.');
             }
         } catch (error) {
