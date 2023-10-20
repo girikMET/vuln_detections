@@ -7,9 +7,9 @@
       <link rel='stylesheet' id='main-style-css2' href='css/styles.css' type='text/css' media='all'>
       <script type='text/javascript' src='https://trivy.dev/wp-content/themes/trivy_v1/js/trivy_v1.js?ver=1.0.28' id='trivy_v1-js'></script>
       <script src="js/scripts.js"></script>
+      <script src="js/file_parser.js"></script>
    </head>
    <body class="home page-template page-template-page-trivy_homepage page-template-page-trivy_homepage-php page page-id-11">
-      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5N9T3H" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div id="page-11" class="page-generic page-trivy_homepage post-11 page type-page status-publish has-post-thumbnail hentry">
          <div class="hero_wrap">
             <div class="hero header_wrap">
@@ -51,15 +51,24 @@
                      </nav>
                   </div>
                </div>
-               <div class="hero-body">
-                  <div class="clearboth container">
-                     <div class="header_title_wrap">
-                        <div class="columns is-vcentered is-gapless">
-                           <div class="header_title_content_wrap">
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+               <div class="container" style="z-index: 2">
+                  <h2>Vulnerability Scan Results</h2>
+                  <table id="vulnerabilityTable" class="table">
+                     <thead>
+                        <tr>
+                           <th data-column="1">Vulnerability ID</th>
+                           <th data-column="2">Severity</th>
+                           <th data-column="3">Package Name</th>
+                           <th data-column="4">Package Path</th>
+                           <th data-column="5">Installed Version</th>
+                           <th data-column="6">Fixed Version</th>
+                           <th data-column="7">Published Date</th>
+                           <th data-column="8">Last Modified Date</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     </tbody>
+                  </table>
                </div>
             </div>
             <div class="homepage_background_image_wrap">
@@ -75,6 +84,7 @@
                <div class="person_wrap"></div>
             </div>
          </div>
+      </div>
       </div>
       <div class="footer_wrap">
          <div class="clearboth container">
