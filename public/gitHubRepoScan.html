@@ -18,7 +18,6 @@
                      <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
                         <div class="container">
                            <div class="navbar-brand">
-                              <!-- <a class="navbar-item logo" href="http://localhost:3000" title="Trivy">Giri</a> -->
                               <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"></a>
                            </div>
                            <div id="navbarBasicExample" class="navbar-menu">
@@ -38,13 +37,6 @@
                               </div>
                               <div class="navbar-end">
                                  <a class="navbar-item type_github" href="https://github.com/girikMET/vuln_detections" target="_blank"></a>
-                                 <div class="navbar-item">
-                                    <div class="field is-grouped">
-                                       <p class="control">
-                                          <!-- <a href="https://github.com/girikMET/vuln_detections" target="_blank" class="button is-seafoam type_btn">Get Trivy</a> -->
-                                       </p>
-                                    </div>
-                                 </div>
                               </div>
                            </div>
                         </div>
@@ -54,24 +46,19 @@
                <div class="hero-body">
                   <div class="clearboth container">
                      <div class="header_title_wrap">
-                        <div class="columns is-vcentered is-gapless">
-                           <div class="header_title_content_wrap">
-                              <h1 class="title page_title is-spaced fadeInUp">GitHub Repository Scanning</h1>
-                              <form id="repositoryForm" action="/validate-repo" method="post">
-                                 <input type="text" id="githubUrl" placeholder="Enter GitHub Repository URL:" required size="80px">
-                                 <input type="submit" id="generateReportBtn" value="Submit">
-                              </form>
-                              <div id="result"></div>
-                           </div>
+                        <div class="header_title_content_wrap">
+                           <h1 class="title page_title is-spaced fadeInUp" style="color: #00ffe4;">GitHub Repository Scanning</h1>
+                           <form id="repositoryForm" action="/validate-repo" method="post">
+                              <input type="text" id="githubUrl" placeholder="Enter GitHub Repository URL:" required size="80px">
+                              <input type="submit" id="generateReportBtn" value="Submit">
+                           </form>
+                           <div id="result"></div>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
             <div class="homepage_background_image_wrap">
-               <!-- <video autoplay muted loop id="videoBG">
-                  <source src="../meta/bg.mp4" type="video/mp4">
-                  </video> -->
                <div class="stars_wrap">
                   <div class="stars_bg"></div>
                </div>
