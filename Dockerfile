@@ -4,8 +4,12 @@ FROM ubuntu:latest
 ENV DEBIAN_FRONTEND=noninteractive
 
 ## Installing the Dependencies for project
-RUN apt-get update && apt-get install -y python3 python3-pip tzdata git nodejs npm
+RUN apt-get update && apt-get install -y python3 python3-pip tzdata git nodejs npm wget jq
 RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
+
+## Installing trivy
+RUN wget https://github.com/aquasecurity/trivy/releases/download/v0.38.1/trivy_0.38.1_Linux-64bit.deb
+RUN dpkg -i trivy_0.38.1_Linux-64bit.deb
 
 # Clone the repository
 RUN git clone https://github.com/girikMET/vuln_detections.git /vuln_detections
