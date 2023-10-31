@@ -12,12 +12,26 @@ function handleRoute(req, res, fileName) {
 
 app.post('/validate-repo', (req, res) => {
   const { repoUrl } = req.body;
-    exec(`python3 trivy_detection.py --repo ${repoUrl}`, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error executing the script: ${error}`);
-        res.status(500).send('Internal Server Error');
-        return;
-      }
+  const { exec } = require('child_process');
+  const executeScript = () => {
+    return new Promise((resolve, reject) => {
+      exec(`python3 trivy_detection.py --repo ${repoUrl}`, (error, stdout, stderr) => {
+        if (error) {
+          console.error(`Error executing the script: ${error}`);
+          reject('Internal Server Error');
+        } else {
+          console.log('Script execution completed.');
+          resolve(stdout);
+        }
+      });
+    });
+  };
+  executeScript()
+    .then((output) => {
+      res.status(200).send('Script executed successfully');
+    })
+    .catch((err) => {
+      res.status(500).send(err);
     });
 });
 
@@ -33,7 +47,7 @@ app.get('/check-url', (req, res) => {
 
 app.get('/:page', (req, res) => {
   const page = req.params.page;
-  if (page == 'validate-repo') {
+  if (page == 'validate-repo' || page.endsWith == '.json') {
     console.log(page);
   } else {
     handleRoute(req, res, `${page}.html`);
