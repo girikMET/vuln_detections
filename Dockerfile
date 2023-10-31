@@ -5,6 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 ## Installing the Dependencies for project
 RUN apt-get update && apt-get install -y python3 python3-pip tzdata git nodejs npm wget jq
+RUN pip3 install urllib3
 RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
 
 ## Installing trivy
