@@ -30,7 +30,6 @@ def run_trivy_scan(scan_type, target, directory, filename):
                             'VulnerabilityID': typevulobject.get('VulnerabilityID', 'N/A'),
                             'Severity': typevulobject.get('Severity', 'N/A'),
                             'PkgName': typevulobject.get('PkgName', 'N/A'),
-                            'PkgPath': typevulobject.get('PkgPath', 'N/A'),
                             'InstalledVersion': typevulobject.get('InstalledVersion', 'N/A'),
                             'FixedVersion': typevulobject.get('FixedVersion', 'N/A'),
                             'PublishedDate': typevulobject.get('PublishedDate', 'N/A'),
@@ -42,13 +41,12 @@ def run_trivy_scan(scan_type, target, directory, filename):
         json.dump(filtered_results, filtered_json_fd, indent=2)
 
     with open(f'public/meta/results/{directory}/{filename}.csv', 'w') as fd:
-        fd.write("VulnerabilityID,Severity,PkgName,PkgPath,InstalledVersion,FixedVersion,PublishedDate,LastModifiedDate\n")
+        fd.write("VulnerabilityID,Severity,PkgName,InstalledVersion,FixedVersion,PublishedDate,LastModifiedDate\n")
         for filtered_vulnerability in filtered_results:
-            output = "{},{},{},{},{},{},{},{}".format(
+            output = "{},{},{},{},{},{},{}".format(
                 filtered_vulnerability['VulnerabilityID'],
                 filtered_vulnerability['Severity'],
                 filtered_vulnerability['PkgName'],
-                filtered_vulnerability['PkgPath'],
                 filtered_vulnerability['InstalledVersion'],
                 filtered_vulnerability['FixedVersion'],
                 filtered_vulnerability['PublishedDate'],
