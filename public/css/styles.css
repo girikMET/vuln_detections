@@ -61,9 +61,3 @@
 	color: #07242d;
 	z-index: 10;
 }
-
-.container_giri {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
