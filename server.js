@@ -7,7 +7,6 @@ config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 const executeScript = util.promisify(exec);
-
 app.use(express.static(path.join(process.cwd(), 'public')));
 app.use(express.json());
 
@@ -34,7 +33,6 @@ app.post('/scan-repo', async (req, res) => {
 
 app.get('/:page', (req, res) => {
   const { page } = req.params;
-
   if (page === 'scan-repo' || page.endsWith('.json')) {
     console.log(page);
   } else {
