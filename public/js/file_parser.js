@@ -5,7 +5,7 @@ function loadVulnerabilityData(json_file_path) {
           const container = document.querySelector('.container_giri');
           if (!data || (Array.isArray(data) && data.length === 0)) {
              const noVulnerabilitiesMessage = document.createElement('p');
-             noVulnerabilitiesMessage.textContent = 'No Vulnerabilities are found in this Repository';
+             noVulnerabilitiesMessage.textContent = 'No vulnerabilities are detected in this repository';
              noVulnerabilitiesMessage.style.color = 'black';
              const containerDiv = document.createElement('div');
              containerDiv.className = 'container_giri';
