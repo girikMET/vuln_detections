@@ -32,6 +32,7 @@
     "package.json": "^2.0.1",
     "python": "^0.0.4",
     "python3": "^0.0.1",
-    "valid-url": "^1.0.9"
+    "valid-url": "^1.0.9",
+    "validator": "^13.11.0"
   }
 }

@@ -6,7 +6,8 @@
       <link rel='stylesheet' id='main-style-css' href='https://trivy.dev/wp-content/themes/trivy_v1/css/trivy_v1.min.css?ver=1.0.28' type='text/css' media='all'>
       <link rel='stylesheet' id='main-style-css2' href='css/styles.css' type='text/css' media='all'>
       <script type='text/javascript' src='https://trivy.dev/wp-content/themes/trivy_v1/js/trivy_v1.js?ver=1.0.28' id='trivy_v1-js'></script>
-      <script src="js/scripts.js"></script>
+      <script src="js/image_scripts.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    </head>
    <body class="home page-template page-template-page-trivy_homepage page-template-page-trivy_homepage-php page page-id-11">
       <div id="page-11" class="page-generic page-trivy_homepage post-11 page type-page status-publish has-post-thumbnail hentry">
@@ -42,6 +43,20 @@
                      </nav>
                   </div>
                </div>
+               <div class="hero-body">
+                  <div class="clearboth container">
+                      <div class="header_title_wrap">
+                          <div class="header_title_content_wrap">
+                              <h1 class="title page_title is-spaced fadeInUp" style="color: #00ffe4;">Container Image Scanning</h1>
+                              <form id="imageScanningForm" action="/scan-image" method="post">
+                                  <input type="text" id="containerImageUrl" placeholder="Enter Container Image Name:" required style="font-size: 20px; width: 660px; height: 40px;">
+                                  <input type="submit" id="scanImageButton" value="Scan Image" required style="width: 150px; height: 40px;">
+                              </form>
+                              <div id="imageScanResult"></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>              
             </div>
             <div class="homepage_background_image_wrap">
                <div class="stars_wrap">
