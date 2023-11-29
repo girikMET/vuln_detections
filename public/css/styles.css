@@ -67,3 +67,21 @@
     flex-direction: column;
     align-items: center;
 }
+
+#vulnerabilityTable tbody {
+    max-height: 700px;
+    overflow-y: auto;
+    display: block;
+}
+
+#vulnerabilityTable thead, 
+#vulnerabilityTable tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#vulnerabilityTable {
+    width: 85%;
+    display: block;
+}
