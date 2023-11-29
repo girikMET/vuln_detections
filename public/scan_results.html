@@ -7,7 +7,10 @@
       <link rel='stylesheet' id='main-style-css2' href='css/styles.css' type='text/css' media='all'>
       <script type='text/javascript' src='https://trivy.dev/wp-content/themes/trivy_v1/js/trivy_v1.js?ver=1.0.28' id='trivy_v1-js'></script>
       <script src="js/scripts.js"></script>
-      <script src="js/file_parser.js"></script>
+      <script type="module">
+         import { initialize } from './js/file_parser.js';
+         document.addEventListener('DOMContentLoaded', initialize);
+      </script>
    </head>
    <body class="home page-template page-template-page-trivy_homepage page-template-page-trivy_homepage-php page page-id-11">
       <div id="page-11" class="page-generic page-trivy_homepage post-11 page type-page status-publish has-post-thumbnail hentry">
@@ -18,7 +21,6 @@
                      <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
                         <div class="container">
                            <div class="navbar-brand">
-                              <!-- <a class="navbar-item logo" href="http://localhost:3000" title="Trivy">Giri</a> -->
                               <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"></a>
                            </div>
                            <div id="navbarBasicExample" class="navbar-menu">
@@ -31,7 +33,7 @@
                                        <div class="dropdown-content horizontal" style="white-space: nowrap;">
                                           <a href="/gitHubRepoScan" style="color: grey; pointer-events: none;">GitHub Repository Scanning</a>
                                           <a href="/imageScan">Container Image Scanning</a>
-                                          <a href="#" onclick="showNotImplementedMessage();">File System Scanning</a>
+                                          <a href="#" onclick="showNotImplementedMessage(event);">File System Scanning</a>
                                        </div>
                                     </div>
                                  </div>

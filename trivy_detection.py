@@ -63,13 +63,17 @@ if args.repo:
             filename = parts[-1]
             create_directory_if_not_exists(f'public/meta/results/{directory}')
             run_trivy_scan('repo', repo_url, directory, filename)
-
     else:
         print(f"Please check the provided GitHub repository URL is wrong.")
-
 elif args.image:
-    create_directory_if_not_exists(f'public/meta/results/{args.image}')
-    run_trivy_scan('i', args.image, args.image, args.image)
+    parts = args.image.split(":")
+    if len(parts) == 2:
+        dir_name, filename = parts[0], parts[1]
+    else:
+        dir_name = parts[0]
+        filename = "latest"
+    create_directory_if_not_exists(f'public/meta/results/{dir_name}')
+    run_trivy_scan('i', args.image, dir_name, filename)
 
 else:
     print("Please provide either --image or --repo argument.")
