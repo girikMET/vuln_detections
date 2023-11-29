@@ -3,10 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         const imageUrl = document.getElementById('containerImageUrl').value;
+        if (!isValidContainerImageUrl(imageUrl)) {
+            alert('Invalid container image URL. Please enter a valid URL.');
+            return;
+        }
         let parts = imageUrl.split(':');
         let dirName = parts[0];
         let fileName = parts.length > 1 ? parts[1] : 'latest';
-        let destinationURL = '/scan_results?path=' + dirName + '/' + fileName + '.json';
+        let destinationURL = '/scanResults?path=' + dirName + '/' + fileName + '.json';
 
         fetch('/scan-image', {
             method: 'POST',
@@ -31,3 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Error:', error));
     });
 });
+
+function isValidContainerImageUrl(url) {
+    const regex = /^[a-zA-Z0-9]+(?:[\/._-][a-zA-Z0-9]+)*(:[a-zA-Z0-9]+)?$/;
+    return regex.test(url);
+}

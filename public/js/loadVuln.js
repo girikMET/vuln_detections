@@ -37,9 +37,11 @@ export function loadVulnerabilityData(json_file_path) {
                const row = document.createElement('tr');
                // Highlight rows based on severity
                if (item.Severity === 'CRITICAL') {
-                  row.style.backgroundColor = '#ffcccc'; // red
+                  row.style.backgroundColor = '#ffcccc';
                } else if (item.Severity === 'HIGH') {
-                  row.style.backgroundColor = '#fffccc'; // orange
+                  row.style.backgroundColor = '#fffccc';
+               } else if (item.Severity === 'MEDIUM') {
+                  row.style.backgroundColor = '#ccffff';
                }
                const columnMapping = {
                   'Vulnerability ID': 'VulnerabilityID',

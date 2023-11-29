@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-US" class="is-fullheight">
    <head>
-      <meta charset="UTF-8" />
+      <meta charset="UTF-8">
       <link rel="shortcut icon" href="meta/favicon.jpg">
       <link rel='stylesheet' id='main-style-css' href='https://trivy.dev/wp-content/themes/trivy_v1/css/trivy_v1.min.css?ver=1.0.28' type='text/css' media='all'>
       <link rel='stylesheet' id='main-style-css2' href='css/styles.css' type='text/css' media='all'>
       <script type='text/javascript' src='https://trivy.dev/wp-content/themes/trivy_v1/js/trivy_v1.js?ver=1.0.28' id='trivy_v1-js'></script>
       <script src="js/scripts.js"></script>
+      <script type="module">
+         import { initialize } from './js/loadVuln.js';
+         document.addEventListener('DOMContentLoaded', initialize);
+      </script>
    </head>
    <body class="home page-template page-template-page-trivy_homepage page-template-page-trivy_homepage-php page page-id-11">
       <div id="page-11" class="page-generic page-trivy_homepage post-11 page type-page status-publish has-post-thumbnail hentry">
@@ -25,9 +29,9 @@
                                  <a class="navbar-item" href="/about" class="button solidseafoamarrowbutton_custom margin-bottom-20 page_cta">About Us</a>
                                  <div class="navbar-item">
                                     <div class="dropdown">
-                                       <a class="navbar-item" href="/scan" class="button solidseafoamarrowbutton_custom page_cta" style="color: grey; pointer-events: none;">Let's Start</a>
+                                       <a class="navbar-item" href="/scan" class="button solidseafoamarrowbutton_custom page_cta">Let's Start</a>
                                        <div class="dropdown-content horizontal" style="white-space: nowrap;">
-                                          <a href="/gitHubRepoScan">GitHub Repository Scanning</a>
+                                          <a href="/gitHubRepoScan" style="color: grey; pointer-events: none;">GitHub Repository Scanning</a>
                                           <a href="/imageScan">Container Image Scanning</a>
                                           <a href="#" onclick="showNotImplementedMessage(event);">File System Scanning</a>
                                        </div>
@@ -42,42 +46,14 @@
                      </nav>
                   </div>
                </div>
-               <div class="hero-body">
-                  <div class="clearboth container">
-                     <div class="header_title_wrap">
-                        <div class="header_title_content_wrap" style="z-index: 4;">
-                           <h1 class="title page_title is-spaced fadeInUp" style="color: #00ffe4;">Scanning for Vulnerabilities :</h1>
-                           <ul>
-                              <li><a style="font-size: xx-large;" href="/gitHubRepoScan" style="color: #00ffe4;">1. GitHub Repository</a>
-                                 <span style="color: white; font-size: x-large;"> - scans GitHub repositories to identify vulnerabilities.</span>
-                              </li>
-                              <li><a style="font-size: xx-large;" href="/imageScan">2. Container Image</a>
-                                 <span style="color: white; font-size: x-large; padding: 22px;"> - scans Container Images to identify vulnerabilities.</span>
-                              </li>
-                              <li><a style="font-size: xx-large;" href="#" onclick="showNotImplementedMessage();">3. File System</a>
-                                 <span style="color: white; font-size: x-large; padding: 96px;"> - scans File System to identify vulnerabilities.</span>
-                              </li>
-                           </ul>
-                        </div>
-                     </div>
-                  </div>
+               <div class="container_giri" style="z-index: 2;">
+                  <h2 id="scanTitle" style="color: white; font-size: 1.5em;">Vulnerability Scan Results</h2>
+                  <script src="js/urlRepo.js"></script>
+                  <table id="vulnerabilityTable" class="table"></table>
                </div>
-            </div>
-            <div class="homepage_background_image_wrap">
-               <div class="stars_wrap">
-                  <div class="stars_bg"></div>
-               </div>
-               <div class="terrain_wrap"></div>
-               <div class="beams_wrap">
-                  <div class="beam"></div>
-                  <div class="beam num2"></div>
-                  <div class="beam num3"></div>
-                  <div class="sphere"></div>
-               </div>
-               <div class="person_wrap"></div>
             </div>
          </div>
-         <iframe src="bouncingBlocks.html" frameborder="0" scrolling="yes" width="100%" height="2000"></iframe>
+      </div>
       </div>
       <div class="footer_wrap">
          <div class="clearboth container">

@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
    const scanRepo = async (repositoryUrl) => {
       const strippedUrl = repositoryUrl.replace(/^(https?:\/\/)?(www\.)?github\.com\//, '');
-      let destinationURL = '/scan_results?path=' + strippedUrl + '.json';
+      let destinationURL = '/scanResults?path=' + strippedUrl + '.json';
       const response = await fetch('/scan-repo', {
          method: 'POST',
          headers: {
