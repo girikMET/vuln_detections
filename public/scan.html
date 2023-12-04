@@ -45,19 +45,27 @@
                <div class="hero-body">
                   <div class="clearboth container">
                      <div class="header_title_wrap">
-                        <div class="header_title_content_wrap" style="z-index: 4;">
-                           <h1 class="title page_title is-spaced fadeInUp" style="color: #00ffe4;">Scanning for Vulnerabilities :</h1>
-                           <ul>
-                              <li><a style="font-size: xx-large;" href="/gitHubRepoScan" style="color: #00ffe4;">1. GitHub Repository</a>
-                                 <span style="color: white; font-size: x-large;"> - scans GitHub repositories to identify vulnerabilities.</span>
-                              </li>
-                              <li><a style="font-size: xx-large;" href="/imageScan">2. Container Image</a>
-                                 <span style="color: white; font-size: x-large; padding: 22px;"> - scans Container Images to identify vulnerabilities.</span>
-                              </li>
-                              <li><a style="font-size: xx-large;" href="#" onclick="showNotImplementedMessage(event);">3. File System</a>
-                                 <span style="color: white; font-size: x-large; padding: 96px;"> - scans File System to identify vulnerabilities.</span>
-                              </li>
-                           </ul>
+                        <div class="header_title_content_wrap" style="z-index: 4; color: white;">
+                           <h1 class="title page_title is-spaced fadeInUp" style="color: white;">Scanning for Vulnerabilities :</h1>
+                           <h2 class="page_title" style="font-size: xx-large;">Features</h2>
+                           <div style="list-style: decimal inside ; padding-left: 30px;">
+                              <a style="font-size: xx-large; color: blue;" href="/gitHubRepoScan">1. GitHub Repository</a>
+                              <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Purpose:</strong> Identifies security issues within the code stored in GitHub repositories.</p>
+                              <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Method:</strong> Utilizes static analysis to scan the repository's code for known security flaws like hard-coded credentials or outdated libraries.</p>
+                              <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Importance:</strong> Helps in early detection of vulnerabilities in code repositories to prevent deployment of flawed applications.</p>
+                           </div>
+                           <div style="list-style: decimal inside ; padding-left: 30px;">
+                              <a style="font-size: xx-large; color: blue;" href="/imageScan">2. Container Image</a>
+                              <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Purpose:</strong> Detects security vulnerabilities within container images.</p>
+                              <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Method:</strong> Scans container images against a database of known vulnerabilities, checking for outdated libraries or insecure configurations.</p>
+                              <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Importance:</strong> Ensures that containerized environments, which package applications with their dependencies, are secure and free from risks.</p>
+                           </div>
+                           <div style="list-style: decimal inside ; padding-left: 30px;">
+                              <a style="font-size: xx-large; color: blue;" href="#" onclick="showNotImplementedMessage(event);">3. File System Scanning</a>
+                              <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Purpose:</strong> Detects vulnerabilities and malicious content within a file system.</p>
+                              <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Method:</strong> Scans the file system for known security threats and vulnerabilities, ensuring data integrity and security.</p>
+                              <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Importance:</strong> Critical for maintaining the overall security of the system by preventing data breaches and system compromises.</p>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -91,7 +99,6 @@
                </div>
             </div>
          </div>
-      </div>
       </div>
    </body>
 </html>

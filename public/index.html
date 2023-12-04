@@ -46,9 +46,28 @@
                   <div class="clearboth container">
                      <div class="header_title_wrap">
                         <div class="columns is-vcentered is-gapless">
-                           <div class="header_title_content_wrap">
+                           <div class="header_title_content_wrap" style="color: white;">
                               <h1 class="title page_title is-spaced fadeInUp">Vulnerability Detections Tool</h1>
-                              <h2 class="subtitle page_subtitle fadeInUp animationDelay_1">This tool is a robust, high-speed, and user-friendly security scanner tool designed for detecting vulnerabilities. Utilize Trivy to identify security risks, discover misconfigurations in Infrastructure as Code (IaC), perform SBOM (Software Bill of Materials) discovery, conduct cloud scanning, assess Kubernetes security, and much more</h2>
+                              <h2 class="subtitle page_subtitle fadeInUp animationDelay_1">This tool provides a comprehensive security solution designed to identify and scan vulnerabilities in various environments.</h2>
+                              <h2 class="page_title" style="font-size: xx-large;">Features</h2>
+                              <div style="list-style: decimal inside ; padding-left: 30px;">
+                                 <h3 style="font-size: xx-large;">1. Container Scanning</h3>
+                                 <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Purpose:</strong> Detects security vulnerabilities within container images.</p>
+                                 <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Method:</strong> Scans container images against a database of known vulnerabilities, checking for outdated libraries or insecure configurations.</p>
+                                 <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Importance:</strong> Ensures that containerized environments, which package applications with their dependencies, are secure and free from risks.</p>
+                              </div>
+                              <div style="list-style: decimal inside ; padding-left: 30px;">
+                                 <h3 style="font-size: xx-large;">2. GitHub Repository Scanning</h3>
+                                 <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Purpose:</strong> Identifies security issues within the code stored in GitHub repositories.</p>
+                                 <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Method:</strong> Utilizes static analysis to scan the repository's code for known security flaws like hard-coded credentials or outdated libraries.</p>
+                                 <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Importance:</strong> Helps in early detection of vulnerabilities in code repositories to prevent deployment of flawed applications.</p>
+                              </div>
+                              <div style="list-style: decimal inside ; padding-left: 30px;">
+                                 <h3 style="font-size: xx-large;">3. File System Scanning</h3>
+                                 <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Purpose:</strong> Detects vulnerabilities and malicious content within a file system.</p>
+                                 <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Method:</strong> Scans the file system for known security threats and vulnerabilities, ensuring data integrity and security.</p>
+                                 <p><strong style="color: white; list-style: circle ; padding-left: 30px;">Importance:</strong> Critical for maintaining the overall security of the system by preventing data breaches and system compromises.</p>
+                              </div>
                            </div>
                         </div>
                      </div>
@@ -82,7 +101,6 @@
                </div>
             </div>
          </div>
-      </div>
       </div>
    </body>
 </html>
