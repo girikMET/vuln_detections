@@ -5,7 +5,7 @@ import { config } from 'dotenv';
 import fetch from 'node-fetch';
 import validator from 'validator';
 import { spawn, exec } from 'child_process';
-const pathToEnv = path.resolve('/etc/secrets/', '.env');
+const pathToEnv = path.resolve('./', '.env');
 config({ path: pathToEnv });
 const app = express();
 const PORT = process.env.PORT || 3000;
