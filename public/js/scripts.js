@@ -6,7 +6,7 @@ const showNotImplementedMessage = (event) => {
 document.addEventListener('DOMContentLoaded', () => {
    const repositoryUrlInput = document.getElementById('githubUrl');
    const generateReportBtn = document.getElementById('generateReportBtn');
-   
+
    if (generateReportBtn) {
       generateReportBtn.disabled = true;
       if (repositoryUrlInput) {
@@ -52,24 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
    }
 
    const checkRepositoryExists = async (repositoryUrl) => {
-      let personalAccessToken;
-      try {
-         const tokenResponse = await fetch('/config');
-         const config = await tokenResponse.json();
-         personalAccessToken = config.GitHubToken;
-      } catch (error) {
-         console.error('Error fetching token:', error);
-         return;
-      }
       const strippedUrl = repositoryUrl.replace(/^(https?:\/\/)?(www\.)?github\.com\//, '');
-      const apiUrl = `https://api.github.com/repos/${strippedUrl}`;
+      const apiUrl = `/check-repo?url=${encodeURIComponent(strippedUrl)}`;
+
       try {
-         const response = await fetch(apiUrl, {
-            headers: {
-               'Authorization': `token ${personalAccessToken.trim()}`
-            }
-         });
-         if (response.ok) {
+         const response = await fetch(apiUrl);
+         const result = await response.json();
+
+         if (result.exists) {
             if (generateReportBtn) {
                generateReportBtn.disabled = false;
                generateReportBtn.value = 'Submit';

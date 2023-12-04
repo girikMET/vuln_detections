@@ -15,7 +15,8 @@ class TrivyScanner {
   private: void create_directory_if_not_exists(const string & directory_path) {
     struct stat st {};
     if (stat(directory_path.c_str(), & st) == -1) {
-      mkdir(directory_path.c_str(), 0700);
+        string command = "mkdir -p " + directory_path;
+        system(command.c_str());
     }
   }
 
