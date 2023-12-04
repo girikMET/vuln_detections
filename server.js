@@ -1,3 +1,4 @@
+import fs from 'fs';
 import path from 'path';
 import util from 'util';
 import express from 'express';
@@ -5,7 +6,9 @@ import { config } from 'dotenv';
 import fetch from 'node-fetch';
 import validator from 'validator';
 import { spawn, exec } from 'child_process';
-const pathToEnv = path.resolve('./', '.env');
+const secretsPath = path.resolve('/etc/secrets', '.env');
+const localPath = path.resolve('./.env');
+const pathToEnv = fs.existsSync(secretsPath) ? secretsPath : localPath;
 config({ path: pathToEnv });
 const app = express();
 const PORT = process.env.PORT || 3000;
