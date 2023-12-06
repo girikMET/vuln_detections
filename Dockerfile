@@ -20,10 +20,10 @@ WORKDIR /vuln_detections
 
 # Install dependencies
 RUN npm install package.json
+RUN npm install -g pm2
 
 # Expose the required port
 EXPOSE 3000
 
 # Command to run the application
-CMD ["pm2", "start", "keep_alive.sh" "--interpreter", "bash", "--name", "keep-alive-script" ]
-CMD ["pm2", "start", "server.js"]
+CMD ["bash", "./startup.sh"]
