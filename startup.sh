@@ -1,4 +1,4 @@
 #!/bin/bash
-pm2 start ./keep_alive.sh --interpreter bash --name keep-alive-script
-pm2 start ./server.js
+pm2 start ./keep_alive.sh --interpreter bash
+pm2 start ./server.js -- --port 3000
 sleep infinity
