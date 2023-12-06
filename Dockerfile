@@ -4,7 +4,7 @@ FROM ubuntu:latest
 ENV DEBIAN_FRONTEND=noninteractive
 
 ## Installing the Dependencies for project
-RUN apt-get update && apt-get install -y python3 python3-pip tzdata git nodejs npm wget curl jq
+RUN apt-get update && apt-get install -y python3 python3-pip tzdata git nodejs npm wget jq
 RUN pip3 install urllib3
 RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
 
@@ -20,10 +20,9 @@ WORKDIR /vuln_detections
 
 # Install dependencies
 RUN npm install package.json
-RUN npm install -g pm2
 
 # Expose the required port
 EXPOSE 3000
 
 # Command to run the application
-CMD ["bash", "./startup.sh"]
+CMD ["node", "server.js"]
