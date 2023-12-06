@@ -4,7 +4,7 @@ FROM ubuntu:latest
 ENV DEBIAN_FRONTEND=noninteractive
 
 ## Installing the Dependencies for project
-RUN apt-get update && apt-get install -y python3 python3-pip tzdata git nodejs npm wget jq
+RUN apt-get update && apt-get install -y python3 python3-pip tzdata git nodejs npm wget curl jq
 RUN pip3 install urllib3
 RUN ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
 
@@ -25,4 +25,5 @@ RUN npm install package.json
 EXPOSE 3000
 
 # Command to run the application
-CMD ["node", "server.js"]
+CMD ["pm2", "start", "keep_alive.sh" "--interpreter", "bash", "--name", "keep-alive-script" ]
+CMD ["pm2", "start", "server.js"]
